@@ -1,7 +1,10 @@
 <template>
   <div class="entry-page">
-    <div class="background" :style="{ background: backgroundStyle }"></div>
-    <button class="enter-button" @mouseenter="hoverEnter" @mouseleave="hoverLeave" @click="redirectToWebsite">Enter Website</button>
+    <div class="background" >
+      
+    </div>
+
+    <button class="enter-button" @mouseenter="hoverEnter" @mouseleave="hoverLeave" @click="redirectToWebsite">Login</button>
   </div>
 </template>
 
@@ -12,11 +15,8 @@ export default {
       isHovered: false,
     };
   },
-  computed: {
-    backgroundStyle() {
-      return this.isHovered ? 'linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), url(your-image.jpg)' : 'url(your-image.jpg)';
-    }
-  },
+  
+  
   methods: {
     hoverEnter() {
       this.isHovered = true;
@@ -25,7 +25,8 @@ export default {
       this.isHovered = false;
     },
     redirectToWebsite() {
-      window.location.href = 'application';
+      //this.$router.push("/login");
+      window.location.href = 'login';
     }
   }
 };
@@ -39,13 +40,12 @@ export default {
 }
 
 .background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  transition: background 0.5s ease;
+  background-image: url("../assets/carousel1.jpg");
+  background-size: cover;                       /* Scale the background image to cover the entire container */
+  background-position: center;                 /* Center the background image */
+  background-repeat: no-repeat;                /* Do not repeat the image */
+  height: 100vh;                               /* Make sure the body covers the whole viewport */
+  margin: 0;    
 }
 
 .enter-button {
@@ -55,7 +55,7 @@ export default {
   transform: translateX(-50%);
   padding: 15px 30px;
   font-size: 18px;
-  background-color: #333;
+  background-color: #003f03;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -64,7 +64,7 @@ export default {
 }
 
 .enter-button:hover {
-  background-color: #555; 
+  background-color: #00914d; 
 }
 </style>
 
