@@ -6,18 +6,24 @@ on:
     paths:
       - public/**/*
       - src/**/*
+      - etc/**/*
       - package.json
       - package-lock.json
       - vite.config.js
+      - index.html
+      - Dockerfile
       - .github/workflows/build.yaml
   pull_request:
     branches: [ "master" ]
     paths:
       - public/**/*
       - src/**/*
+      - etc/**/*
       - package.json
       - package-lock.json
       - vite.config.js
+      - index.html
+      - Dockerfile
       - .github/workflows/build.yaml
 jobs:
   ci:
