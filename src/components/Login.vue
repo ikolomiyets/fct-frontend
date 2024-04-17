@@ -3,7 +3,7 @@
     <h1>{{ error }}</h1>
   </div>
   <div v-else>
-    <h2>Questions</h2>
+    <h2></h2>
     <div v-for="q in questions" key="q.id">
         <div>{{ q.id }}</div>
         <div>{{ q.question }}</div>
@@ -26,13 +26,13 @@ export default {
     try {
       const config = useConfigStore();
       console.log(config);
-      const response = await axios.get('http://localhost:3000/questions', {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${config.accessToken}`                      }
-      });
-      this.error = null;
-      this.questions = response.data.questions;
+      //const response = await axios.get('http://localhost:3000/questions', {
+      //  headers: {
+      //    'Accept': 'application/json',
+      //    'Authorization': `Bearer ${config.accessToken}`                      }
+      //});
+      //this.error = null;
+      //this.questions = response.data.questions;
     } catch(e) {
       console.log(e);
       this.error = e.message;
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     login() {
-      // Simulate a login process (replace with your authentication logic)
+      // Simulate a login process (replace with my authentication logic)
       if (this.username === 'user' && this.password === 'password') {
         alert('Login successful!');
       } else {
