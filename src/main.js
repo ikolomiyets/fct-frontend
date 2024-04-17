@@ -16,7 +16,7 @@ app.use(pinia);
 
 loadConfig()
 .then((config) => {
-    saveJwksKeys(jose.createRemoteJWKSet(new URL("https://dev-d4tf4m1mg470mn4s.us.auth0.com/.well-known/jwks.json")));
+    saveJwksKeys(jose.createRemoteJWKSet(new URL(config.jwks_url)));
     app.use(router);
     app.use(ganttastic)
     app.mount('#app');

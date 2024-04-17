@@ -5,6 +5,6 @@
     "application_scopes": "openid%20profile%20offline_access%20read:questions%20read:student%20read:supervisor%20read:admin",
     "audience": "https://fct-api.com",
     "backend_url": "http://localhost:3000",
-    "logout_url": "https://dev-d4tf4m1mg470mn4s.us.auth0.com/oidc/logout"
-
+    "logout_url": "https://dev-d4tf4m1mg470mn4s.us.auth0.com/oidc/logout",
+    "jswk_url": "https://dev-d4tf4m1mg470mn4s.us.auth0.com/.well-known/jwks.json"
 }
