@@ -14,6 +14,7 @@ import AddFeedback from '../components/AddFeedback.vue';
 import TransferPage from '../components/TransferPage.vue';
 import Admin from '../components/Admin.vue';
 import NewUser from '../components/NewUser.vue';
+import SecondRead from '../components/SecondRead.vue'
 
 //import Answers from '../components/Answers.vue';
 
@@ -84,6 +85,7 @@ const router = createRouter({
         },
         { path: '/questions', component: Questions},
         { path: '/requests', component: Requests},
+        { path: '/secondRead', component: SecondRead},
         { path: '/collab/:id/feedback/:feedbackId', component: AddFeedback},
         //{ path: '/answers', component: Answers},
         {

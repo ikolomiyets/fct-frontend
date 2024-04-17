@@ -5,6 +5,7 @@
       <h3>Supervisor Home</h3>
       <div class="buttons">
         <button  @click="goToRequests">Proposals</button>
+        <button @click="goToSecondRead">Second Reading</button>
         <button  @click="logout">Logout</button>
       </div>
     </nav>
@@ -58,6 +59,9 @@ export default {
     goToCollab(item) {
       this.$router.push(`/collab/${item.id}`);
     },
+    goToSecondRead() {
+      this.$router.push('/secondRead');
+    }
   },
 };
 </script>

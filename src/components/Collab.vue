@@ -44,7 +44,7 @@
             <a style="display: inline;" :href="selectedLinks">{{ selectedLinks }}</a>
           </div>
           <br><br>
-          <button class="submit-button" @click="goToFeedback(selectedID)">View Feedback</button>
+          <button class="submit-button" @click="goToFeedback(selectedID)">Feedback</button>
           <button class="cancel-button" @click="hideOverlay">Exit</button>
           <button class="delete-button" @click="deleteGanttItem(selectedID)">Delete</button>
           <button class="complete-button" @click="completeGanttItem(selectedID)">Complete</button>
