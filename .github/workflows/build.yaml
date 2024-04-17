@@ -2,7 +2,7 @@ name: Vue-CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
     paths:
       - public/**/*
       - src/**/*
@@ -14,7 +14,7 @@ on:
       - Dockerfile
       - .github/workflows/build.yaml
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
     paths:
       - public/**/*
       - src/**/*
