@@ -26,23 +26,23 @@ const router = createRouter({
     routes: [
         { path: '/', component: HelloWorld},
         { path: '/unauthorized', component: UnauthorizedAccess },
-        {   path: '/login', 
+        {   path: '/login',
             component: Login,
             async beforeEnter(to, from, next) {
-                
+
                  if (hasScopes('read:supervisor')) {
                     next('/supervisorHome');
                 } else if (hasScopes('read:student')) {
                     const config = useConfigStore();
                     const url = `${config.config.backend_url}/verify`;
-                    try {  
+                    try {
                     const response = await axios.get(url, {
                       headers: {
                         authorization: `Bearer ${config.accessToken}`,
                       },
                     });
                     console.log(response);
-                    if (response.status == 200) {
+                    if (response.status === 200) {
                         if(response.data.found) {
                             next('/application');
                         } else {
@@ -51,13 +51,13 @@ const router = createRouter({
                     } else {
                         console.log("unexpected status code")
                     }
-                      
+
                     } catch(e) {
                       console.error("failed to get Project status from user");
                       console.log(e);
                     }
-                    
-                
+
+
                 } else if (hasScopes('read:admin')) {
                     next('/admin');
                 } else {
@@ -65,7 +65,7 @@ const router = createRouter({
                 }
             }
 
-            
+
         },
         { path: '/newUser', component: NewUser},
         { path: '/admin', component: Admin},
@@ -89,7 +89,7 @@ const router = createRouter({
         { path: '/collab/:id/feedback/:feedbackId', component: AddFeedback},
         //{ path: '/answers', component: Answers},
         {
-             path: '/callback', 
+             path: '/callback',
              component: Login,
              async beforeEnter(to, from, next) {
                 console.log('processing callback')
@@ -133,16 +133,16 @@ const router = createRouter({
                             console.log(e);
                             next("/");
                         }
-                        
-            
-            
+
+
+
                     }
-                } 
+                }
                 next();
              }
         },
         {
-            path: '/logout', 
+            path: '/logout',
             component: Login,
             async beforeEnter(to, from, next) {
                console.log('processing callback')
@@ -151,7 +151,7 @@ const router = createRouter({
                localStorage.removeItem('refreshToken');
                localStorage.removeItem('tokenExpiresAt');
                next("/");
-               
+
             }
        }
       ], // short for `routes: routes`
@@ -166,9 +166,9 @@ const router = createRouter({
              console.log("Using stored credentials")
              const config = useConfigStore();
              config.storeTokens({
-                 access_token: localStorage.accessToken, 
-                 id_token: localStorage.idToken, 
-                 refresh_token: localStorage.refreshToken, 
+                 access_token: localStorage.accessToken,
+                 id_token: localStorage.idToken,
+                 refresh_token: localStorage.refreshToken,
                  expires_in: +localStorage.tokenExpiresAt
              });
              const claims = await extractUserData(localStorage.accessToken);
@@ -211,7 +211,7 @@ const router = createRouter({
              localStorage.nextRoute = JSON.stringify(to);
              location.href = `${config.config.authorise_url}?response_type=code&client_id=${config.config.client_id}&redirect_uri=${config.config.callback}&scope=${config.config.application_scopes}&audience=${config.config.audience}&state=${localStorage.state}`;
              next(false)
-             return 
+             return
      }
      }
      next();
